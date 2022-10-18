@@ -20,12 +20,64 @@ html {
   flex-direction: column;
   justify-content: space-evenly;
   cursor: pointer;
+  transition: right 0.7s;
+}
+.hamburger-menu span {
+  position: absolute;
+  left: 5rem;
+  width: 10rem;
+  height: 4rem;
+  background-color: #c29525;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  font-family: "Baloo Da 2", serif;
+  font-size: 1.6rem;
+  letter-spacing: 0.1rem;
+  opacity: 0;
+  border-radius: 2rem;
+  visibility: hidden;
+  transition: opacity 0.3s ease-in;
+}
+.change .hamburger-menu:hover span {
+  opacity: 1;
+  visibility: visible;
+}
+.change .hamburger-menu span::before {
+  content: "";
+  width: 0;
+  height: 0;
+  position: absolute;
+  border-left: 1rem solid transparent;
+  border-right: 1rem solid transparent;
+  border-bottom: 1rem solid #c29525;
+  left: -1.2rem;
+  top: 38%;
+  transform: rotate(-90deg);
+}
+.change .hamburger-menu {
+  right: 33rem;
 }
 .line {
   width: 100%;
   height: 0.2rem;
   background-color: white;
   box-shadow: 0 0.1rem 0.2rem rgba(0, 0, 0, 0.2);
+  transition: all 0.5s ease-out;
+}
+.change .line {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+.change .line-1 {
+  transform: rotate(45deg) translate(0.3rem, 0.8rem);
+}
+.change .line-2 {
+  opacity: 0;
+  visibility: hidden;
+}
+.change .line-3 {
+  transform: rotate(-45deg) translate(0.3rem, -0.8rem);
 }
 .header {
   width: 100%;
@@ -75,6 +127,7 @@ html {
 .banner p {
   font-family: "Josefin Slab", serif;
   font-size: 4rem;
+  padding: 0 3rem 0 0;
   color: white;
   width: 70%;
   letter-spacing: 0.1rem;
@@ -112,8 +165,12 @@ html {
   height: 100vh;
   position: fixed;
   top: 0;
-  right: 0;
+  right: -40rem;
   background-color: #fff;
+  transition: right 0.5s;
+}
+.change .sidebar {
+  right: 0;
 }
 .menu {
   position: absolute;
@@ -128,6 +185,21 @@ html {
   font-family: "Baloo Da 2" serif;
   font-size: 4rem;
   color: #555;
+  position: relative;
+}
+.menu-link::before {
+  content: attr(data-content);
+  position: absolute;
+  top: 0;
+  left: 0;
+  color: #c29525;
+  width: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  transition: width 0.3s ease-in-out;
+}
+.menu-link:hover::before {
+  width: 100%;
 }
 .social-media {
   position: absolute;
@@ -147,4 +219,9 @@ html {
   justify-content: center;
   align-items: center;
   border-radius: 50%;
+  transition: all 0.3s ease-in-out;
+}
+.social-media i:hover {
+  color: rgb(39, 121, 252);
+  background-color: white;
 }
